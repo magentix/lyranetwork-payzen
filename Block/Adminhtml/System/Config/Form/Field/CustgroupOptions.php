@@ -97,6 +97,15 @@ class CustgroupOptions extends \Lyranetwork\Payzen\Block\Adminhtml\System\Config
                 if (key_exists($savedGroup['code'], $groups)) {
                     // Refresh group title.
                     $savedGroups[$id]['title'] = $groups[$savedGroup['code']];
+
+                    // Set amount options if missing
+                    if (!isset($savedGroups[$id]['amount_min'])) {
+                        $savedGroups[$id]['amount_min'] = '';
+                    }
+                    if (!isset($savedGroups[$id]['amount_max'])) {
+                        $savedGroups[$id]['amount_max'] = '';
+                    }
+
                     if ($savedGroup['code'] === 'all') {
                         $savedGroups[$id]['all'] = true;
                     }
